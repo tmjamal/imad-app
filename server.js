@@ -2,6 +2,13 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var pool= require('pg').Pool;
+var config={
+    user:'tmjamal',
+    database:'tmjamal',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password: process.env.DB_PASSWORD
+};
 var app = express();
 app.use(morgan('combined'));
 
@@ -48,14 +55,6 @@ var articles={
      This is the content for my Third article.
     </p>
 `}
-};
-
-var config={
-    user:'tmjamal',
-    database:'tmjamal',
-    host:'db.imad.hasura-app.io',
-    port:'5432',
-    password: process.env.DB_PASSWORD
 };
 
 function createTemplate(data){
@@ -124,7 +123,7 @@ app.get('/counter', function(req, res){
 var names=[];
 app.get('/sumbmit-name',function(req,res){//submit-name?name=xxx
     //get the name from the request
-    var name=req.querry.name;
+    var name=req.query.name;
     names.push(name);
     //JSON:Javascript Object Notation
     res.send(JSON.stringify(names));
