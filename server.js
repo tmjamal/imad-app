@@ -109,6 +109,7 @@ app.get('/test-db', function(req, res){
             res.status(500).send(err.toString());
         }
         else{
+            alert('Hi');
             res.send(JSON.stringify(result.rows));
         }
     });
