@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
+var pool= require('path');
 var app = express();
 app.use(morgan('combined'));
 var articles={
@@ -48,7 +48,13 @@ var articles={
     </p>
 `}
 };
-
+var config={
+    user:'tmjamal',
+    database:'tmjamal',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password: process.env.DB_PASSWORD
+};
 function createTemplate(data){
     var title=data.title;
     var date= data.date;
