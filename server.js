@@ -95,9 +95,9 @@ function createTemplate(data){
     
     return htmlTemplate;
 }
-
+alert('Hi 1');
 app.get('/', function (req, res) {
-    alert('Hi 1');
+    
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
