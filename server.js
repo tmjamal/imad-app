@@ -4,6 +4,7 @@ var path = require('path');
 var pool= require('path');
 var app = express();
 app.use(morgan('combined'));
+
 var articles={
  'article-one':{
     title:'Article One | Jamal Moidutty',
@@ -48,6 +49,7 @@ var articles={
     </p>
 `}
 };
+
 var config={
     user:'tmjamal',
     database:'tmjamal',
@@ -55,6 +57,7 @@ var config={
     port:'5432',
     password: process.env.DB_PASSWORD
 };
+
 function createTemplate(data){
     var title=data.title;
     var date= data.date;
@@ -93,9 +96,11 @@ function createTemplate(data){
     
     return htmlTemplate;
 }
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
 var pool=new Pool(config);
 app.get('/test-db', function(req, res){
     // make a select request
@@ -109,6 +114,8 @@ app.get('/test-db', function(req, res){
         }
     });
 });
+
+
 var counter=0;
 app.get('/counter', function(req, res){
     counter=counter+1;
@@ -137,7 +144,7 @@ app.get('/ui/madi.png', function (req, res) {
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 
-var port = 80;
-app.listen(port, function () {
-  console.log(`IMAD course app listening on port ${port}!`);
-});
+//var port = 80;
+//app.listen(port, function () {
+//  console.log(`IMAD course app listening on port ${port}!`);
+//});
