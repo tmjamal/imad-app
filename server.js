@@ -121,7 +121,14 @@ app.get('/counter', function(req, res){
     counter=counter+1;
     res.send(counter.toString());
     });
-
+var names=[];
+app.get('/sumbmit-name',function(req,res){//submit-name?name=xxx
+    //get the name from the request
+    var name=req.querry.name;
+    names.push(name);
+    //JSON:Javascript Object Notation
+    res.send(JSON.stringify(names));
+});
 app.get('/:articleName', function(req, res){
     //articleName==article-one
     //articles[articleName]=={}content object for article one
