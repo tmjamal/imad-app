@@ -97,6 +97,7 @@ function createTemplate(data){
 }
 
 app.get('/', function (req, res) {
+    alert('Hi 1');
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
@@ -109,7 +110,7 @@ app.get('/test-db', function(req, res){
             res.status(500).send(err.toString());
         }
         else{
-            alert('Hi');
+            alert('Hi2');
             res.send(JSON.stringify(result.rows));
         }
     });
